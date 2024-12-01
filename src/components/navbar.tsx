@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       {/* Header Placeholder */}
-      <div className="p-[60px] bg-white shadow-lg"></div>
+      <div className="p-[20px] bg-white shadow-lg"></div>
 
       {/* Header */}
       <header
@@ -100,27 +100,30 @@ function MenuItems({ isMobile }: { isMobile?: boolean }) {
   return (
     <ul className={`flex ${isMobile ? 'flex-col space-y-4' : 'space-x-8 mr-[70px]'}`}>
       {/* Beranda Dropdown */}
-      <DropdownMenu title="Beranda" isMobile={isMobile} items={['Berita', 'Galeri', 'Video']} />
+      <DropdownMenu title="Beranda" isMobile={isMobile} items={['']} />
 
       {/* Profil Dropdown */}
       <DropdownMenu
-        title="Profil"
+        title="Pemerintahan"
         isMobile={isMobile}
-        items={['Tentang Sekolah', 'Visi dan Misi', 'Kepala Sekolah', 'Prestasi Sekolah', 'Peminatan']}
+        items={['Struktur Organisasi', 'Perangkat Desa', 'Lembaga Desa']}
       />
 
       {/* Data Dropdown */}
-      <DropdownMenu title="Data" isMobile={isMobile} items={['Sarpas', 'Guru', 'Murid', 'Lainnya']} />
+      <DropdownMenu title="Layanan" isMobile={isMobile} items={['Desa Digital', 'Talas Bogor', 'Mobile Apps SIDEDIGAYA']} />
 
       {/* Informasi Dropdown */}
       <DropdownMenu
         title="Informasi"
         isMobile={isMobile}
-        items={['Pengumuman', 'Agenda Kegiatan', 'Jadwal Pelajaran', 'Jadwal Ujian', 'Ekstrakurikuler', 'Unduhan']}
+        items={['Berita', 'Pengumuman', 'Agenda Kegiatan', 'Galeri', 'Download', 'APB Desa']}
       />
 
       {/* Osis Dropdown */}
-      <DropdownMenu title="Osis" isMobile={isMobile} items={['Tentang Osis', 'Program Kerja', 'Kegiatan']} />
+      <DropdownMenu title="Destinasi" isMobile={isMobile} items={['']} />
+
+      <DropdownMenu title="Produk Hukum" isMobile={isMobile} items={['']} />
+
     </ul>
   );
 }
@@ -133,7 +136,7 @@ function DropdownMenu({ title, items, isMobile }: { title: string; items: string
 
   return (
     <li className="relative group z-20 font-semibold text-black">
-      <button className="hover:text-green-300">{title}</button>
+      <button className="hover:text-green-600">{title}</button>
       <ul className={dropdownClasses}>
         {items.map((item, index) => (
           <li key={index}>
