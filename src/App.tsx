@@ -4,6 +4,12 @@ import Struktur from "./pages/struktur/struktur"
 import Perangkatdesa from "./pages/perangakatdesa/perangkat";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserLayout from "./layout/userLayout";
+import Berita from "./pages/berita/berita"
+import Pengumuman from "./pages/pengumuman/pengumuman";
+import Agenda from "./pages/agendaKegiatan/agenda";
+import Galeri from "./pages/galeri/galeri";
+import Download from "./pages/download/download";
+import APB from "./pages/APB-Desa/apb";
 
 const App: React.FC = () => {
   return (
@@ -26,6 +32,54 @@ const App: React.FC = () => {
           } />
 
 <Route
+          path="/APB"
+          element={
+            <UserLayout>
+              <APB />
+            </UserLayout>
+          } />
+
+<Route
+          path="/galeri"
+          element={
+            <UserLayout>
+              <Galeri />
+            </UserLayout>
+          } />
+
+<Route
+          path="/Download"
+          element={
+            <UserLayout>
+              <Download />
+            </UserLayout>
+          } />
+
+<Route
+          path="/agenda"
+          element={
+            <UserLayout>
+              <Agenda />
+            </UserLayout>
+          } />
+
+<Route
+          path="/pengumuman"
+          element={
+            <UserLayout>
+              <Pengumuman />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/berita"
+          element={
+            <UserLayout>
+              <Berita />
+            </UserLayout>
+          } />
+
+        <Route
           path="/perangkat-desa"
           element={
             <UserLayout>
