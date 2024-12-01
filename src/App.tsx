@@ -13,6 +13,10 @@ import APB from "./pages/APB-Desa/apb";
 import LembagaDesa from "./pages/lembagadesa/lembagadesa";
 import ProdukHukum from "./pages/produkHukum/produkHukum";
 import Destinasi from "./pages/destinasi/destinasi";
+import Tentangkami from "./pages/tentangkami/tentangkami";
+import Visimisi from "./pages/visimisi/visimisi";
+import Sejarahdesa from "./pages/sejarahdesa/sejarahdesa";
+
 
 const App: React.FC = () => {
   return (
@@ -111,6 +115,30 @@ const App: React.FC = () => {
           element={
             <UserLayout>
               <ProdukHukum />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/tentangkami"
+          element={
+            <UserLayout>
+              <Tentangkami />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/visimisi"
+          element={
+            <UserLayout>
+              <Visimisi />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/sejarahdesa"
+          element={
+            <UserLayout>
+              <Sejarahdesa />
             </UserLayout>
           } />
 
