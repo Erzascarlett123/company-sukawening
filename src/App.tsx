@@ -10,6 +10,9 @@ import Agenda from "./pages/agendaKegiatan/agenda";
 import Galeri from "./pages/galeri/galeri";
 import Download from "./pages/download/download";
 import APB from "./pages/APB-Desa/apb";
+import LembagaDesa from "./pages/lembagadesa/lembagadesa";
+import ProdukHukum from "./pages/produkHukum/produkHukum";
+import Destinasi from "./pages/destinasi/destinasi";
 
 const App: React.FC = () => {
   return (
@@ -84,6 +87,30 @@ const App: React.FC = () => {
           element={
             <UserLayout>
               <Perangkatdesa />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/lembagadesa"
+          element={
+            <UserLayout>
+              <LembagaDesa />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/Destinasi"
+          element={
+            <UserLayout>
+              <Destinasi />
+            </UserLayout>
+          } />
+
+          <Route
+          path="/produkHukum"
+          element={
+            <UserLayout>
+              <ProdukHukum />
             </UserLayout>
           } />
 
