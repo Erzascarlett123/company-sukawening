@@ -126,13 +126,13 @@ function MenuItems({ isMobile }: { isMobile?: boolean }) {
   );
 }
 
-// Komponen MenuItem
 function MenuItem({ to, title }: { to: string; title: string }) {
   return (
-    <li className="font-semibold text-black">
+    <li className="relative font-semibold text-black group">
       <Link to={to} className="hover:text-green-600">
         {title}
       </Link>
+      <span className="absolute bottom-0 left-0 block w-full h-0.5 bg-green-600 scale-0 group-hover:scale-100 transition-transform duration-300 ease-in-out"></span>
     </li>
   );
 }
