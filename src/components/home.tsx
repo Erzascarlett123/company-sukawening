@@ -82,6 +82,8 @@ function App() {
     <>
       <Navbar />
 
+      <div className='p-[3rem]'></div>
+
       {/* Hero Section */}
       <section id="home" className="relative text-center text-white py-32 min-h-screen overflow-hidden">
         <img
