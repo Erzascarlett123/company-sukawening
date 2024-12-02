@@ -254,11 +254,11 @@ function App() {
           ></iframe>
           
           <div className='p-8'>
-          <button className="flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold text-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700 group">
+          <a href='https://www.youtube.com/embed/6T69O2o0ZyE'target='blank' className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold text-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-700 group">
             <span>Read More</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="ml-3 w-5 h-5 transform group-hover:translate-x-2 transition-all duration-300"
+              className="inline-block ml-3 w-5 h-5 transform group-hover:translate-x-2 transition-all duration-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -270,7 +270,7 @@ function App() {
                 d="M5 12h14M12 5l7 7-7 7"
               />
             </svg>
-          </button>
+          </a>
           </div>
         </div>
       </div>
