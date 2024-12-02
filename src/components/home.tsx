@@ -42,7 +42,7 @@ function StrukturOrganisasi() {
   }, []);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className='p-[20px]'>
   <div className="text-md font-semibold mb-4 text-blue-600">Struktur Organisasi:</div>
 
   <div className="flex overflow-x-auto space-x-6">

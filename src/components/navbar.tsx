@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Route, Link, Routes } from 'react-router-dom';
 import '../App.css';
 import Logo from '../assets/images/blog.png';
 
@@ -14,7 +15,6 @@ function App() {
     }
   }, [isSidebarOpen]);
 
-  // Menangani perubahan scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -23,27 +23,8 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Menangani klik di luar sidebar untuk menutupnya
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar && !sidebar.contains(e.target as Node)) {
-        setIsSidebarOpen(false);
-      }
-    };
-    if (isSidebarOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isSidebarOpen]);
-
   return (
     <>
-      {/* Header Placeholder */}
-      <div className="p-[20px] bg-white shadow-lg"></div>
-
       {/* Header */}
       <header
         className={`fixed top-0 w-full z-20 transition-all duration-300 ease-in-out ${
@@ -91,48 +72,84 @@ function App() {
           <MenuItems isMobile />
         </div>
       </aside>
+
+      {/* Content */}
+        <Routes>
+          <Route path="/" element={<div></div>} /> 
+          <Route path="/struktur" element={<div>Struktur Organisasi</div>} />
+          <Route path="/perangkat" element={<div>Perangkat Desa</div>} />
+          <Route path="/lembaga" element={<div>Lembaga Desa</div>} />
+          <Route path="/desa-digital" element={<div>Desa Digital</div>} />
+          <Route path="/talas-bogor" element={<div>Talas Bogor</div>} />
+          <Route path="/mobile-apps" element={<div>Mobile Apps SIDEDIGAYA</div>} />
+          <Route path="/berita" element={<div>Berita</div>} />
+          <Route path="/pengumuman" element={<div>Pengumuman</div>} />
+        </Routes>
     </>
   );
 }
 
-// Komponen MenuItems untuk memisahkan logika dropdown
+// Komponen MenuItems
 function MenuItems({ isMobile }: { isMobile?: boolean }) {
   return (
     <ul className={`flex ${isMobile ? 'flex-col space-y-4' : 'space-x-8 mr-[70px]'}`}>
-      {/* Beranda Dropdown */}
-      <DropdownMenu title="Beranda" isMobile={isMobile} items={['']} />
-
-      {/* Profil Dropdown */}
+      <MenuItem to="/" title="Beranda" />
       <DropdownMenu
         title="Pemerintahan"
+        items={[
+          { label: 'Struktur Organisasi', path: '/struktur' },
+          { label: 'Perangkat Desa', path: '/perangkat-desa' },
+          { label: 'Lembaga Desa', path: '/lembagadesa' },
+        ]}
         isMobile={isMobile}
-        items={['Struktur Organisasi', 'Perangkat Desa', 'Lembaga Desa']}
       />
-
-      {/* Data Dropdown */}
-      <DropdownMenu title="Layanan" isMobile={isMobile} items={['Desa Digital', 'Talas Bogor', 'Mobile Apps SIDEDIGAYA']} />
-
-      {/* Informasi Dropdown */}
+      <DropdownMenu
+        title="Layanan"
+        items={[
+          { label: 'Desa Digital', path: 'https://desadigital.bogorkab.go.id/' },
+          { label: 'Talas Bogor', path: 'http://talas.bogorkab.go.id/' },
+          { label: 'Mobile Apps SIDEDIGAYA', path: 'https://play.google.com/store/apps/details?id=com.sidedigaya.diskominfo.kabbogor' },
+        ]}
+        isMobile={isMobile}
+      />
       <DropdownMenu
         title="Informasi"
+        items={[
+          { label: 'Berita', path: '/berita' },
+          { label: 'Pengumuman', path: '/pengumuman' },
+        ]}
         isMobile={isMobile}
-        items={['Berita', 'Pengumuman', 'Agenda Kegiatan', 'Galeri', 'Download', 'APB Desa']}
       />
-
-      {/* Osis Dropdown */}
-      <DropdownMenu title="Destinasi" isMobile={isMobile} items={['']} />
-
-      <DropdownMenu title="Produk Hukum" isMobile={isMobile} items={['']} />
-
+            <MenuItem to="/destinasi" title="Destinasi" />
+            <MenuItem to="/produkHukum" title="Beranda" />
     </ul>
   );
 }
 
-// Komponen DropdownMenu untuk memudahkan pembuatan dropdown
-function DropdownMenu({ title, items, isMobile }: { title: string; items: string[]; isMobile?: boolean }) {
+// Komponen MenuItem
+function MenuItem({ to, title }: { to: string; title: string }) {
+  return (
+    <li className="font-semibold text-black">
+      <Link to={to} className="hover:text-green-600">
+        {title}
+      </Link>
+    </li>
+  );
+}
+
+// Komponen DropdownMenu
+function DropdownMenu({
+  title,
+  items,
+  isMobile,
+}: {
+  title: string;
+  items: { label: string; path: string }[];
+  isMobile?: boolean;
+}) {
   const dropdownClasses = isMobile
     ? 'block w-full px-4 py-2'
-    : 'absolute left-0 hidden mt-2 bg-white text-black shadow-lg group-hover:block';
+    : 'absolute left-0 hidden mt-0 bg-white text-black shadow-lg group-hover:block';
 
   return (
     <li className="relative group z-20 font-semibold text-black">
@@ -140,9 +157,9 @@ function DropdownMenu({ title, items, isMobile }: { title: string; items: string
       <ul className={dropdownClasses}>
         {items.map((item, index) => (
           <li key={index}>
-            <a href={`#${item.toLowerCase().replace(/ /g, '-')}`} className="block px-4 py-2 hover:bg-gray-200">
-              {item}
-            </a>
+            <Link to={item.path} className="block px-4 py-2 hover:bg-gray-200">
+              {item.label}
+            </Link>
           </li>
         ))}
       </ul>
