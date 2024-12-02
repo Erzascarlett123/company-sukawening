@@ -3,20 +3,34 @@ import "../App.css";
 import background from "../assets/images/depan.jpeg";
 import Navbar from "../components/navbar";
 import { FaSchool, FaUserTie, FaBullseye } from 'react-icons/fa';
-import anime from "../assets/images/anime.png";
-import Footer from "../components/footer";
+import Footer from "../components/footer";  
+import Scroll from "../assets/images/scroll.png"
+import Person1 from "../assets/images/p1.jpg"
+import Person2 from "../assets/images/p2.jpg"
+import Person3 from "../assets/images/p3.jpg"
+import Person4 from "../assets/images/p4.jpg"
+import Person5 from "../assets/images/p5.jpg"
+import Person6 from "../assets/images/p6.jpg"
+import Person7 from "../assets/images/p7.jpg"
+import Person8 from "../assets/images/p8.jpg"
+import B1 from "../assets/images/b1.jpg"
+import B2 from "../assets/images/b2.jpg"
+import g1 from "../assets/images/depan3.jpeg"
+import g2 from "../assets/images/depan4.jpeg"
+import g3 from "../assets/images/depan5.jpeg"
+
 
 function StrukturOrganisasi() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = [
-    { name: "Person 1", role: "Jabatan Person 1", image: anime },
-    { name: "Person 2", role: "Jabatan Person 2", image: anime },
-    { name: "Person 3", role: "Jabatan Person 3", image: anime },
-    { name: "Person 4", role: "Jabatan Person 4", image: anime },
-    { name: "Person 5", role: "Jabatan Person 5", image: anime },
-    { name: "Person 6", role: "Jabatan Person 6", image: anime },
-    { name: "Person 7", role: "Jabatan Person 7", image: anime },
-    { name: "Person 8", role: "Jabatan Person 8", image: anime },
+    { name: "Jarkasih", role: "KEPALA DESA", image: Person1 },
+    { name: "SABILUDIN, S.PD.I", role: "SEKRETARIS DESA", image: Person2 },
+    { name: "RINA ADRIYANTI", role: "KAUR KEUANGAN", image: Person3 },
+    { name: "ULFA AULINA", role: "KASI KESEJAHTERAAN RAKYAT", image: Person4 },
+    { name: "UJANG SUHANDI", role: "KAUR PERENCANAAN", image: Person5 },
+    { name: "DESKA ISKANDAR", role: "KAUR UMUM", image: Person6 },
+    { name: "ACIP SUHENDAR", role: "KASI PEMERINTAHAN", image: Person7 },
+    { name: "OMAH SRIHAYATINAH", role: "KASI PELAYANAN", image: Person8 },
   ];
 
   // Automatic slider change every 3 seconds
@@ -144,7 +158,7 @@ function App() {
                 </li>
               </ul>
               <img
-                src={anime}
+                src={Scroll}
                 alt="Gambar Desa"
                 className="rounded-lg shadow-md"
               />
@@ -158,13 +172,16 @@ function App() {
               {/* Artikel 1 */}
               <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
                 <img
-                  src={background}
+                  src={B1}
                   alt="Thumbnail"
                   className="w-24 h-24 rounded-md object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
+                  <h3 className="text-lg font-semibold">Tim PPK Ormawa BEM FEMA Ajak Anak-Anak di Desa Sukawening Berkreasi Membuat Ecoprint</h3>
+                  <p className="text-gray-600">Tim PPK Ormawa BEM FEMA menggelar praktik ecoprint bersama anak-anak Madrasah Ar Ridwan RT 01
+                   RW 05 Desa
+                   Sukawening pada tanggal 28 Juli 2024. Praktik ecoprint ini berlangsung di pojok literasi interaksi seni dan lingkungan
+                    yang merupakan salah satu …</p>
                   <a
                     href="#"
                     className="text-blue-500 hover:underline text-sm mt-2 inline-block"
@@ -177,13 +194,16 @@ function App() {
               {/* Artikel 2 */}
               <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
                 <img
-                  src={background}
+                  src={B2}
                   alt="Thumbnail"
                   className="w-24 h-24 rounded-md object-cover"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 2</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
+                  <h3 className="text-lg font-semibold">Membangun Kepercayaan Diri Siswa Madrasah Al-Fitri dalam Berbahasa Inggris 
+                  melalui English Day Bersama TIM PPK Ormawa BEM FEMA IPB</h3>
+                  <p className="text-gray-600">Pada Minggu, 4 Agustus 2024, tim PPK Ormawa BEM FEMA IPB mengadakan kegiatan English Day di 
+                  Madrasah Al-Fitri, Desa Sukawening,
+                   Kabupaten Bogor. Kegiatan ini, yang merupakan salah satu sub tema belajar Pojok Minat Bakat, bagian dari pojok literasi da…</p>
                   <a
                     href="#"
                     className="text-blue-500 hover:underline text-sm mt-2 inline-block"
@@ -193,118 +213,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <img
-                  src={background}
-                  alt="Thumbnail"
-                  className="w-24 h-24 rounded-md object-cover"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <img
-                  src={background}
-                  alt="Thumbnail"
-                  className="w-24 h-24 rounded-md object-cover"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <img
-                  src={background}
-                  alt="Thumbnail"
-                  className="w-24 h-24 rounded-md object-cover"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <img
-                  src={background}
-                  alt="Thumbnail"
-                  className="w-24 h-24 rounded-md object-cover"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                <img
-                  src={background}
-                  alt="Thumbnail"
-                  className="w-24 h-24 rounded-md object-cover"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                  <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                  <a
-                    href="#"
-                    className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                  >
-                    Baca Selengkapnya
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg shadow-md flex flex-col space-y-4">
-            <div className="text-md font-semibold">
-              Pengumuman:
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-              <img
-                src={anime}
-                alt="Thumbnail"
-                className="w-40 h-40 rounded-md object-cover"
-              />
-              <div>
-                <h3 className="text-lg font-semibold">Judul Artikel Berita 1</h3>
-                <p className="text-gray-600">Deskripsi singkat artikel...</p>
-                <a
-                  href="#"
-                  className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                >
-                  Baca Selengkapnya
-                </a>
-              </div>
-            </div>
-          </div>
+                {/*berita terbaru end*/}
 
           <div className="bg-white p-6 rounded-lg shadow-md flex flex-col space-y-4">
         <div className="text-md font-semibold">
@@ -375,21 +284,21 @@ function App() {
           {/* Example of gallery images */}
           <div>
             <img
-              src="https://via.placeholder.com/200"
+              src={g1}
               alt="Gallery 1"
               className="w-full h-full object-cover rounded-lg"
             />
           </div>
           <div>
             <img
-              src="https://via.placeholder.com/200"
+              src={g2}
               alt="Gallery 2"
               className="w-full h-full object-cover rounded-lg"
             />
           </div>
           <div>
             <img
-              src="https://via.placeholder.com/200"
+              src={g3}
               alt="Gallery 3"
               className="w-full h-full object-cover rounded-lg"
             />
@@ -449,7 +358,7 @@ function App() {
         </div>
         <div className="flex justify-between">
           <span className="font-semibold">Luas Wilayah:</span>
-          <span>---</span>
+          <span>179.940 Ha</span>
         </div>
         <div className="flex justify-between">
           <span className="font-semibold">Batas Sebelah Utara:</span>
