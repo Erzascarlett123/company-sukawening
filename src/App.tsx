@@ -6,6 +6,8 @@ import Perangkatdesa from "./pages/perangakatdesa/perangkat";
 import LoginForm from "./components/login";
 import SignUpForm from "./components/signup";
 import AdminDashboard from "./pages/dashboardAdmin/adminDashboard";
+import Berita from "./pages/berita/berita"
+import Pengumuman from "./pages/pengumuman/pengumuman"
 import Protect from "./components/ProtectedRoute"
 import Notification from "./pages/dashboardAdmin/notification/notifAdmin"
 import BeritaAdmin from "./pages/dashboardAdmin/beritaAdmin/beritaAdmin"
@@ -37,6 +39,25 @@ const App: React.FC = () => {
             </UserLayout>
           }
         />
+
+<Route
+          path="/berita"
+          element={
+            <UserLayout>
+              <Berita />
+            </UserLayout>
+          }
+        />
+
+<Route
+          path="/pengumuman"
+          element={
+            <UserLayout>
+              <Pengumuman />
+            </UserLayout>
+          }
+        />
+
         <Route
           path="/perangkat-desa"
           element={
