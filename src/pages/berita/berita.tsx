@@ -1,67 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "../../supabaseClient";
 import Footer from "../../components/footer";
-import Foto from "../../assets/images/bg-1.jpg"
 
-// Tipe untuk berita
 type News = {
   id: number;
   title: string;
   summary: string;
   content: string;
-  image: string;
+  image_url: string; // Pastikan properti ini sesuai dengan field di database Anda
 };
 
-const newsData: News[] = [
-  {
-    id: 1,
-    title: "Berita 1",
-    summary: "Ini adalah ringkasan dari berita pertama...",
-    content:
-      "Ini adalah isi lengkap berita pertama. Anda dapat membaca lebih lanjut tentang topik ini.",
-    image: Foto,
-  },
-  {
-    id: 2,
-    title: "Berita 2",
-    summary: "Ini adalah ringkasan dari berita kedua...",
-    content:
-      "Ini adalah isi lengkap berita kedua. Anda dapat membaca lebih lanjut tentang topik ini.",
-    image: Foto,
-  },
-  {
-    id: 3,
-    title: "Berita 3",
-    summary: "Ini adalah ringkasan dari berita ketiga...",
-    content:
-      "Ini adalah isi lengkap berita ketiga. Anda dapat membaca lebih lanjut tentang topik ini.",
-    image: Foto ,
-  },
-];
-
 const NewsGallery: React.FC = () => {
+  const [newsData, setNewsData] = useState<News[]>([]);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const { data, error } = await supabase.from("berita").select("*"); // Pastikan nama tabel adalah 'berita'
+
+      if (error) {
+        console.error("Error fetching news:", error.message);
+      } else {
+        setNewsData(data || []);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <div className="flex-1 py-10 px-5">
-        <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
-          Galeri Berita
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">Galeri Berita</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsData.map((news) => (
             <div
               key={news.id}
               className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
             >
+              {/* Gambar berita */}
               <img
-                src={news.image}
+                src={`https://ebkhxrqwsstktutulyzn.supabase.co/storage/v1/object/public/berita/p1${news.image_url}`} // Pastikan URL ini benar
                 alt={news.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-5">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  {news.title}
-                </h2>
+                <h2 className="text-xl font-semibold text-gray-800">{news.title}</h2>
                 <p className="text-gray-600 mt-2">{news.summary}</p>
                 <a
                   href="#_"
@@ -101,9 +85,7 @@ const NewsGallery: React.FC = () => {
               >
                 ✖
               </button>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                {selectedNews.title}
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">{selectedNews.title}</h2>
               <p className="text-gray-700">{selectedNews.content}</p>
             </div>
           </div>
