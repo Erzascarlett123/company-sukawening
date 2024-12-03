@@ -6,6 +6,7 @@ import Perangkatdesa from "./pages/perangakatdesa/perangkat";
 import LoginForm from "./components/login";
 import SignUpForm from "./components/signup";
 import AdminDashboard from "./pages/dashboardAdmin/adminDashboard";
+import Protect from "./components/ProtectedRoute"
 import Notification from "./pages/dashboardAdmin/notification/notifAdmin"
 import BeritaAdmin from "./pages/dashboardAdmin/beritaAdmin/beritaAdmin"
 import ArtikelAdmin from "./pages/dashboardAdmin/artikelAdmin/artikelAdmin"
@@ -47,9 +48,11 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/adminDashboard" element={
+          <Protect>
         <AdminLayout>
         <AdminDashboard />
         </AdminLayout>
+        </Protect>
       } />
 
 <Route path="/beritaAdmin" element={

@@ -4,45 +4,63 @@ import { supabase } from "../supabaseClient";
 
 const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAdminRole = async () => {
-      // Menggunakan supabase.auth.getUser() untuk mendapatkan informasi user
-      const { data: userData, error } = await supabase.auth.getUser();
+    const checkUserRole = async () => {
+      try {
+        // Mendapatkan informasi user yang sedang login
+        const { data: userData, error: userError } = await supabase.auth.getUser();
 
-      if (error || !userData?.user) {
-        navigate("/login"); // Jika tidak ada user yang login, arahkan ke login
+        if (userError || !userData?.user) {
+          // Jika tidak ada user yang login, arahkan ke halaman login
+          navigate("/login");
+          return;
+        }
+
+        const user = userData.user;
+
+        // Memeriksa role di tabel "profiles"
+        const { data: profileData, error: profileError } = await supabase
+          .from("profiles")
+          .select("role") // Kolom role
+          .eq("user_id", user.id) // Menggunakan user_id yang dihubungkan dengan Auth
+          .single();
+
+        if (profileError || !profileData) {
+          // Jika pengguna tidak ditemukan di tabel "profiles", arahkan ke halaman signup
+          setErrorMessage("Akun Anda tidak memiliki role yang valid. Silakan mendaftar.");
+          navigate("/signup");
+          return;
+        }
+
+        if (profileData.role === "admin") {
+          // Jika role adalah "admin", beri akses
+          setIsAuthorized(true);
+        } else {
+          // Jika role adalah user atau lainnya, beri notifikasi dan arahkan ke halaman request-access
+          setErrorMessage("Anda bukan admin. Silakan ajukan izin ke admin.");
+          navigate("/request-access");
+        }
+      } catch (error) {
+        console.error("Error saat memeriksa role:", error);
+      } finally {
         setLoading(false);
-        return;
       }
-
-      const user = userData.user;
-
-      // Cek role admin
-      const { data, error: dbError } = await supabase
-        .from("users")
-        .select("role, is_verified") // Periksa apakah admin terkonfirmasi
-        .eq("id", user.id)
-        .single();
-
-      if (dbError || data?.role !== "admin" || !data?.is_verified) {
-        // Jika bukan admin atau belum dikonfirmasi, arahkan ke login
-        navigate("/login");
-      } else {
-        setIsAdmin(true); // Admin yang terverifikasi bisa mengakses halaman ini
-      }
-
-      setLoading(false);
     };
 
-    checkAdminRole();
+    checkUserRole();
   }, [navigate]);
 
   if (loading) return <div>Loading...</div>;
 
-  return isAdmin ? <>{children}</> : null;
+  if (errorMessage) {
+    return <div className="text-red-500 text-center">{errorMessage}</div>;
+  }
+
+  return isAuthorized ? <>{children}</> : null;
 };
 
 export default AdminRoute;
