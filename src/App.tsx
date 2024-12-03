@@ -6,7 +6,12 @@ import Perangkatdesa from "./pages/perangakatdesa/perangkat";
 import LoginForm from "./components/login";
 import SignUpForm from "./components/signup";
 import AdminDashboard from "./pages/dashboardAdmin/adminDashboard";
+import BeritaAdmin from "./pages/dashboardAdmin/beritaAdmin/beritaAdmin"
+import ArtikelAdmin from "./pages/dashboardAdmin/artikelAdmin/artikelAdmin"
+import GaleriAdmin from "./pages/dashboardAdmin/galeriAdmin/galeriAdmin"
+import StrukturAdmin from "./pages/dashboardAdmin/strukturAdmin/strukturAdmin"
 import UserLayout from "./layout/userLayout";
+import AdminLayout from "./layout/sideAdmin"
 import Galeri from "./pages/galeri/galeri";
 import Download from "./pages/download/download";
 
@@ -41,10 +46,35 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/adminDashboard" element={
-        <UserLayout>
+        <AdminLayout>
         <AdminDashboard />
-        </UserLayout>
+        </AdminLayout>
       } />
+
+<Route path="/beritaAdmin" element={
+        <AdminLayout>
+        <BeritaAdmin />
+        </AdminLayout>
+      } />
+
+<Route path="/artikelAdmin" element={
+        <AdminLayout>
+        <ArtikelAdmin />
+        </AdminLayout>
+      } />
+
+<Route path="/GaleriAdmin" element={
+        <AdminLayout>
+        <GaleriAdmin />
+        </AdminLayout>
+      } />
+
+<Route path="/strukturAdmin" element={
+        <AdminLayout>
+        <StrukturAdmin />
+        </AdminLayout>
+      } />
+
         <Route
           path="/galeri"
           element={
