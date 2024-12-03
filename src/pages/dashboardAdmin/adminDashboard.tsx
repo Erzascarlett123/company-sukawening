@@ -1,9 +1,14 @@
+import React from "react";
+import AdminRoute from "../../components/ProtectedRoute"; // Pastikan sudah mengimpor AdminRoute
 
-const AdminDashboard = () => {
+const AdminDashboard: React.FC = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-semibold">Admin Dashboard</h1>
-    </div>
+    <AdminRoute>
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p>Konten halaman Admin yang hanya bisa diakses oleh admin.</p>
+      </div>
+    </AdminRoute>
   );
 };
 

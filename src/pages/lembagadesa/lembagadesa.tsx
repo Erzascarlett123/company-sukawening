@@ -4,9 +4,13 @@ import Logo1 from "../../assets/images/lem1.jpg"; // Ganti dengan path logo yang
 import Logo2 from "../../assets/images/lem2.jpg"; // Ganti dengan path logo yang sesuai
 import Logo3 from "../../assets/images/lem3.jpg"; // Ganti dengan path logo yang sesuai
 import Logo4 from "../../assets/images/lem4.jpg"; // Ganti dengan path logo yang sesuai
+import UserProtect from "../../components/userProtect";
+
 
 function LembagaDesa() {
   return (
+    <UserProtect>
+
     <div>
       {/* Navbar */}
       <Navbar />
@@ -67,6 +71,7 @@ function LembagaDesa() {
       {/* Footer */}
       <Footer />
     </div>
+    </UserProtect>
   );
 }
 

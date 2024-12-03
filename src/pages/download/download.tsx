@@ -1,7 +1,10 @@
 import React from "react";
 import Footer from "../../components/footer";
+import UserProtect from "../../components/userProtect";
+
 
 type DownloadFile = {
+  
   id: number;
   name: string;
   fileUrl: string;
@@ -25,8 +28,11 @@ const downloadData: DownloadFile[] = [
   },
 ];
 
+
 const Download: React.FC = () => {
   return (
+    <UserProtect>
+
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <div className="flex-1 py-10 px-5">
         <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
@@ -52,6 +58,7 @@ const Download: React.FC = () => {
       </div>
       <Footer />
     </div>
+    </UserProtect>
   );
 };
 

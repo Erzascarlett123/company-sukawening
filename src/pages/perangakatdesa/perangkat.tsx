@@ -8,10 +8,11 @@ import Foto4 from "../../assets/images/p5.jpg"
 import Foto5 from "../../assets/images/p6.jpg"
 import Foto6 from "../../assets/images/p7.jpg"
 import Foto7 from "../../assets/images/p8.jpg"
-
+import UserProtect from "../../components/userProtect";
 
 function PerangkatDesa() {
   return (
+    <UserProtect>
     <div className="flex flex-col min-h-screen">
         <div className="p-[20px] bg-white"></div>
       {/* Navbar */}
@@ -52,6 +53,7 @@ function PerangkatDesa() {
 </div>
 <Footer />  
 </div>
+</UserProtect>
   );
 }
 

@@ -1,9 +1,11 @@
 import Navbar from "../../components/navbar";
 import Foto from "../../assets/images/ppk.jpg";
 import Footer from "../../components/footer";
+import UserProtect from "../../components/userProtect";
 
 function Struktur() {
   return (
+    <UserProtect>
     <div>
       <Navbar />
       <div className="p-[1rem] bg-white"></div>
@@ -69,6 +71,7 @@ function Struktur() {
 </div>
         <Footer />
       </div>
+      </UserProtect>
   );
 }
 

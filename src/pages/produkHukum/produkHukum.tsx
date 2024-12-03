@@ -1,9 +1,12 @@
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { FaDownload } from 'react-icons/fa'; // Menggunakan ikon download dari react-icons
+import UserProtect from "../../components/userProtect";
+
 
 function ProdukHukum() {
   return (
+    <UserProtect>
     <div>
       <Navbar />
 
@@ -70,6 +73,7 @@ function ProdukHukum() {
 
       <Footer />
     </div>
+    </UserProtect>
   );
 }
 

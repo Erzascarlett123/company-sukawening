@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Footer from "../../components/footer";
 import Foto from "../../assets/images/bg-1.jpg";
+import UserProtect from "../../components/userProtect";
+
 
 // Tipe untuk pengumuman
 type Announcement = {
@@ -42,6 +44,7 @@ const Announcements: React.FC = () => {
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null);
 
   return (
+    <UserProtect>
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <div className="flex-1 py-10 px-5">
         <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
@@ -111,6 +114,7 @@ const Announcements: React.FC = () => {
       </div>
       <Footer />
     </div>
+    </UserProtect>
   );
 };
 

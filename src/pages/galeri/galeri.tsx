@@ -6,6 +6,8 @@ import Foto2 from "../../assets/images/bg-1.jpg"
 import Foto3 from "../../assets/images/depan3.jpeg"
 import Foto4 from "../../assets/images/depan4.jpeg"
 import Foto5 from "../../assets/images/depan5.jpeg"
+import UserProtect from "../../components/userProtect";
+
 
 const galleryImages = [
   Foto,
@@ -18,6 +20,7 @@ const galleryImages = [
 
 const Gallery: React.FC = () => {
   return (
+    <UserProtect>
     <div className="bg-gray-100 min-h-screen flex flex-col">
       <div className="flex-1 py-10 px-5">
         <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
@@ -43,6 +46,7 @@ const Gallery: React.FC = () => {
       </div>
       <Footer />
     </div>
+    </UserProtect>
   );
 };
 

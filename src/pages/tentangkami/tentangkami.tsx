@@ -1,10 +1,12 @@
 import Navbar from "../../components/navbar";
 import Foto from "../../assets/images/logot.jpg";
 import Footer from "../../components/footer";
-import { MapPinIcon, GlobeAltIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
+import UserProtect from "../../components/userProtect";
+import { MapPinIcon, EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 
 function Tentangkami() {
   return (
+    <UserProtect>
     <div>
       <Navbar />
       <div className="container mx-auto p-[5rem]">
@@ -84,6 +86,7 @@ function Tentangkami() {
       </div>
       <Footer />
     </div>
+    </UserProtect>
   );
 }
 

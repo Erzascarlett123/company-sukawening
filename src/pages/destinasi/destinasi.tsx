@@ -1,9 +1,12 @@
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import Foto from "../../assets/images/anime.png"; // Ganti dengan gambar destinasi yang sesuai
+import UserProtect from "../../components/userProtect";
+
 
 function Destinasi() {
   return (
+    <UserProtect>
     <div>
       <Navbar />
       
@@ -50,6 +53,7 @@ function Destinasi() {
       
       <Footer />
     </div>
+    </UserProtect>
   );
 }
 

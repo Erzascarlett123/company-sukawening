@@ -1,9 +1,11 @@
 import Navbar from "../../components/navbar";
 import Foto from "../../assets/images/visimisi.jpg"; // Contoh gambar logo
 import Footer from "../../components/footer";
+import UserProtect from "../../components/userProtect";
 
 function Visimisi() {
     return (
+        <UserProtect>
         <div>
             <Navbar />
             <div className="p-[1rem] bg-white"></div>
@@ -54,6 +56,7 @@ function Visimisi() {
 
             <Footer />
         </div>
+        </UserProtect>
     );
 }
 
