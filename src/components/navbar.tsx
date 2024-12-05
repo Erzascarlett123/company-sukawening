@@ -121,7 +121,7 @@ function MenuItems({ isMobile }: { isMobile?: boolean }) {
         isMobile={isMobile}
       />
             <MenuItem to="/destinasi" title="Destinasi" />
-            <MenuItem to="/produkHukum" title="Beranda" />
+            <MenuItem to="/produkHukum" title="Produk Hukum" />
     </ul>
   );
 }
