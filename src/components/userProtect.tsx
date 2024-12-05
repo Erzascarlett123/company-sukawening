@@ -11,7 +11,7 @@ const UserRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const checkUserRole = async () => {
       const { data: { user }, error } = await supabase.auth.getUser(); // Menggunakan getUser() di Supabase v2
       if (error || !user) {
-        navigate("/login"); // Jika tidak login, arahkan ke login
+        navigate("/"); // Jika tidak login, arahkan ke login
         return;
       }
 
